@@ -1,27 +1,59 @@
 import React from 'react'
 import "./index.css"  //we need to import index.css with this syntax to use it here in this component to style it
 
+const FirstBook={
+    title: "Rich Dad Poor Dad",
+    author: "Robert T. Kiyosaki",
+    img: "https://images-eu.ssl-images-amazon.com/images/I/91VokXkn8hL._AC_UL200_SR200,200_.jpg"
+}
+const SecondBook={
+    title: "Ikigai",
+    author: "Héctor García",
+    img:"https://images-eu.ssl-images-amazon.com/images/I/81l3rZK4lnL._AC_UL200_SR200,200_.jpg"
+} //creating objects with different values but same variables title, author and img
+
+const ThirdBook={
+    title: "Atomic Habits",
+    author: "James Clear ",
+    img:"https://images-eu.ssl-images-amazon.com/images/I/91bYsX41DVL._AC_UL200_SR200,200_.jpg"
+}
 function Bookstore() {
     return (
         <section className="booklist"> 
-           <Book />
-           <Book />
-           <Book />
+           <Book img={FirstBook.img} title={FirstBook.title} author={FirstBook.author} />
+           <Book img={SecondBook.img} title={SecondBook.title} author={SecondBook.author} />
+           <Book img={ThirdBook.img} title={ThirdBook.title} author={ThirdBook.author} />
         </section>
     )
-} //type "rfce" in this file when it was blank initialy for function component
- // className="booklist" imports booklist class from index.css to style the page here
-const Book= () => {
-    return <article>
-         <Title />
-           <Img />
-           <Author/>
+}
+
+// use any of the below methods as per your convinience
+/* const Book= ({img, title, author}) => { 
+        return <article className='Book'>
+         <img src={img}></img>
+         <h1>{title}</h1>
+         <h3>{author}</h3>  
+        } //this can also be used apart from used method */
+
+ /* const Book= (props) => {
+    const {img, title, author}= props; 
+     return <article className='Book'>
+         <img src={img}></img>
+         <h1>{title}</h1>
+         <h3>{author}</h3>  
+        }
+
+    */
+
+const Book= (props) => {
+    return <article className='Book'>
+         
+         <img src={props.img}></img>
+         <h1>{props.title}</h1>
+         <h3>{props.author}</h3>
     </article>
 
-} //this is a book component comprising other 3 components defined below as Img, Title and author
-const Img=() => <img src="https://images-eu.ssl-images-amazon.com/images/I/81l3rZK4lnL._AC_UL200_SR200,200_.jpg" alt="" ></img>  //This is how we use CSS inside tags which overrides any property defined by external index.css file
-const Title=() => <h1 style={{color:'#67d98', fontSize:'0.75rem', marginTop:"0.25rem", letterSpacing: '3px'}}>Ikigai: The Japanese secret to a long and happy life</h1> //same as above comment
-const Author=() => <h3 style={{color:'#67d98', fontSize:'0.75rem', marginTop:"0.25rem", letterSpacing: '5px'}}>Héctor García</h3> // same as above comment
-
+} /* this is how we use "props" to reuse the component that we made earlier 
+   and now we are just changing title and author pass props in parameter list*/
 
 export default Bookstore //write this line so that other files can import this part of code i.e Bookstore
