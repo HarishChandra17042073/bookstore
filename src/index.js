@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FirstComponent from "./firstComponent"; //here we have imported first component
-import SecondComponent from "./SecondComponent";
-
+//import FirstComponent from "./firstComponent"; //here we have imported first component
+//import SecondComponent from "./SecondComponent";
+import NestedComponents from "./NestedComponents"
 
 
 ReactDOM.render(
   <React.StrictMode>
-    < FirstComponent /> {/* this is how we use a component */}
-    < SecondComponent />
+   <NestedComponents />
   </React.StrictMode>,
   document.getElementById('root')
 );
